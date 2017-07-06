@@ -8,7 +8,10 @@
 import scrapy
 
 
-class HerenniaItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class AnnouncementItem(scrapy.Item):
+    # 公告标题
+    title = scrapy.Field()
+    # 公告链接
+    link = scrapy.Field()
+
+
