@@ -4,7 +4,7 @@ so called coin spider
 
 1. Get packages:
 
-`conda install scrapy`
+`pip install scrapy`
 
 and then:
 
@@ -18,4 +18,6 @@ In herennia project folder
 
 3. Fetch data:
 
-`GET localhost:9080/crawl.json?start_requests=true&spider_name=announcement`
+`GET localhost:9080/crawl.json?start_requests=true&spider_name=yunbi`
+
+spider_name 目前可以为 yunbi 或 chbtc
