@@ -2,8 +2,8 @@
 import scrapy
 from herennia.items import AnnouncementItem
 
-class AnnouncementSpider(scrapy.Spider):
-    name = "announcement"
+class YunbiSpider(scrapy.Spider):
+    name = "yunbi"
 
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/'
@@ -20,8 +20,8 @@ class AnnouncementSpider(scrapy.Spider):
         items = []
         for article in response.xpath('//li[@class="article-list-item "]'):
             item = AnnouncementItem()
-            item['title'] = article.xpath('./a/text()').extract_first()                 
-            item['link'] = article.xpath('./a/@href').extract_first()
+            item['title'] = article.xpath('./a/text()').extract_first().strip()
+            item['link'] = "https://yunbi.zendesk.com" + article.xpath('./a/@href').extract_first()
             items.append(item)
         return items
 
