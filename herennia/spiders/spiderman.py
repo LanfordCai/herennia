@@ -8,6 +8,16 @@ class SpiderMan:
         'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/'
                 '537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safar'
                 'i/537.36',
+        'Accept-Language': 'zh-cn'
+    }
+
+    okcoin_configs = {
+        "name": "okcoin",
+        "host": "https://www.okcoin.cn",
+        "announcement_page": "/service.html",
+        "announcement_xpath": '//span[@class="spanOne"]',
+        "title_xpath": './a[@class="lightblue3 fontsize-14"]/text()',
+        "link_xpath": './a[@class="lightblue3 fontsize-14"]/@href' 
     }
     
     huobi_configs = {
@@ -45,6 +55,8 @@ class SpiderMan:
             return cls.yunbi_configs
         elif name == "chbtc":
             return cls.chbtc_configs
+        elif name == "okcoin":
+            return cls.okcoin_configs
 
     @classmethod
     def url(cls, name):
@@ -54,12 +66,15 @@ class SpiderMan:
     @classmethod
     def parse(cls, name):
         configs = cls.configurations(name)
-        def _parse(response):
+        def _parse(response, with_host=True):
             items = []
             for article in response.xpath(configs["announcement_xpath"]):
                 item = AnnouncementItem()
                 item["title"] = article.xpath(configs["title_xpath"]).extract_first().strip()
-                item["link"] = configs["host"] + article.xpath(configs["link_xpath"]).extract_first()
+                if with_host: 
+                    item["link"] = configs["host"] + article.xpath(configs["link_xpath"]).extract_first()
+                else:
+                    item["link"] = article.xpath(configs["link_xpath"]).extract_first()
                 items.append(item)
             return items
         return _parse
