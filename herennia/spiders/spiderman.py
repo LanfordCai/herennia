@@ -11,6 +11,15 @@ class SpiderMan:
         'Accept-Language': 'zh-cn'
     }
 
+    jubi_configs = {
+        "name": "jubi",
+        "host": "https://www.jubi.com",
+        "announcement_page": "/gonggao/",
+        "announcement_xpath": '//div[@class="new_list"]/ul/li',
+        "title_xpath": './a[@class="title"]/text()',
+        "link_xpath": './a[@class="title"]/@href' 
+    }
+
     okcoin_configs = {
         "name": "okcoin",
         "host": "https://www.okcoin.cn",
@@ -57,6 +66,8 @@ class SpiderMan:
             return cls.chbtc_configs
         elif name == "okcoin":
             return cls.okcoin_configs
+        elif name == "jubi":
+            return cls.jubi_configs
 
     @classmethod
     def url(cls, name):
