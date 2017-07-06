@@ -4,6 +4,7 @@ from herennia.items import AnnouncementItem
 
 class ChbtcSpider(scrapy.Spider):
     name = "chbtc"
+    host = "https://www.chbtc.com"
 
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/'
@@ -12,7 +13,7 @@ class ChbtcSpider(scrapy.Spider):
     }
 
     def start_requests(self):
-        url = "https://www.chbtc.com/i/blog?type=proclamation"
+        url = self.host + "/i/blog?type=proclamation"
         yield scrapy.Request(url, headers=self.headers)
     
     def parse(self, response):
@@ -21,6 +22,6 @@ class ChbtcSpider(scrapy.Spider):
         for article in response.xpath('//article[@class="envor-post"]'):
             item = AnnouncementItem()
             item['title'] = article.xpath('./header/h3/a/text()').extract_first().strip()               
-            item['link'] = "https://www.chbtc.com" + article.xpath('./header/h3/a/@href').extract_first()
+            item['link'] = self.host + article.xpath('./header/h3/a/@href').extract_first()
             items.append(item)
         return items
