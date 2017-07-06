@@ -20,4 +20,4 @@ In herennia project folder
 
 `GET localhost:9080/crawl.json?start_requests=true&spider_name=yunbi`
 
-spider_name 目前可以为 yunbi/chbtc/huobi/okcoin
+spider_name 目前可以为 yunbi/chbtc/huobi/okcoin/jubi
