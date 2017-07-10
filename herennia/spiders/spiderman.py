@@ -64,7 +64,7 @@ class SpiderMan:
         "title_xpath": './header/h3/a/text()',
         "link_xpath": './header/h3/a/@href'
     }
-    
+
     @classmethod
     def configurations(cls, name):
         if name == "huobi":

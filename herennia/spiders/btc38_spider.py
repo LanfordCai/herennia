@@ -5,12 +5,10 @@ from herennia.spiders.spiderman import SpiderMan
 class Btc38Spider(scrapy.Spider):
     name = "btc38"
 
-    headers = SpiderMan.headers
-
     def start_requests(self):
         url = SpiderMan.url(self.name)
-        yield scrapy.Request(url, headers=self.headers)
+        yield scrapy.Request(url, headers=SpiderMan.headers)
     
     def parse(self, response):
-        return SpiderMan.parse(self.name)(response)
+        return SpiderMan.parse(self.name)(response, with_host=False)
 
