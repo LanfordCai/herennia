@@ -2,8 +2,8 @@
 import scrapy
 from herennia.spiders.spiderman import SpiderMan
 
-class BterSpider(scrapy.Spider):
-    name = "bter"
+class Btc9Spider(scrapy.Spider):
+    name = "btc9"
 
     def start_requests(self):
         url = SpiderMan.url(self.name)
@@ -11,3 +11,4 @@ class BterSpider(scrapy.Spider):
     
     def parse(self, response):
         return SpiderMan.parse(self.name)(response)
+

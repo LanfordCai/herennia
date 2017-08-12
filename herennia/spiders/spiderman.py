@@ -11,6 +11,15 @@ class SpiderMan:
         'Accept-Language': 'zh-cn'
     }
 
+    btc9_configs = {
+        "name": "btc9",
+        "host": "https://www.btc9.com",
+        "announcement_page": "/Art/index/id/1.html",
+        "announcement_xpath": '//li[@class="list-group-item"]',
+        "title_xpath": './a/text()',
+        "link_xpath": './a/@href' 
+    }
+
     bter_configs = {
         "name": "bter",
         "host": "https://bter.com",
@@ -90,6 +99,8 @@ class SpiderMan:
             return cls.btc38_configs
         elif name == "bter":
             return cls.bter_configs
+        elif name == "btc9":
+            return cls.btc9_configs
 
     @classmethod
     def url(cls, name):
@@ -102,7 +113,6 @@ class SpiderMan:
         def _parse(response, with_host=True):
             items = []
             for article in response.xpath(configs["announcement_xpath"]):
-                print(article)
                 item = AnnouncementItem()
                 item["title"] = article.xpath(configs["title_xpath"]).extract_first().strip()
                 if with_host: 
