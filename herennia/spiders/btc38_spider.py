@@ -7,7 +7,9 @@ class Btc38Spider(scrapy.Spider):
 
     def start_requests(self):
         url = SpiderMan.url(self.name)
-        yield scrapy.Request(url, headers=SpiderMan.headers)
+        request = scrapy.Request(url, headers=SpiderMan.headers)
+        request.meta['PhantomJS'] = True
+        yield request
     
     def parse(self, response):
         return SpiderMan.parse(self.name)(response, with_host=False)

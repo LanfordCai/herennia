@@ -32,10 +32,10 @@ class SpiderMan:
     btc38_configs = {
         "name": "btc38",
         "host": "http://www.btc38.com",
-        "announcement_page": "/",
-        "announcement_xpath": '//div[text()=' + u'"时代活动公告"' + ']/../div[3]/div[2]/a',
-        "title_xpath": './text()',
-        "link_xpath": './@href'   
+        "announcement_page": "/company_notices.html",
+        "announcement_xpath": '//li[@class="shadow"]',
+        "title_xpath": './a/span[1]/text()',
+        "link_xpath": './a/@href'
     }
 
     jubi_configs = {

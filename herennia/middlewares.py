@@ -5,7 +5,19 @@
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
-from scrapy import signals
+from scrapy import signals, http
+from selenium import webdriver
+
+class PhantomJSMiddleware(object):
+
+    @classmethod
+    def process_request(cls, request, spider):
+        if request.meta.has_key('PhantomJS'):
+            driver = webdriver.Firefox()
+            driver.get(request.url)
+            content = driver.page_source.encode('utf-8')
+            driver.quit()  
+            return http.HtmlResponse(request.url, encoding='utf-8', body=content, request=request)
 
 
 class HerenniaSpiderMiddleware(object):
