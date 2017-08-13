@@ -32,9 +32,9 @@ class SpiderMan:
     btc38_configs = {
         "name": "btc38",
         "host": "http://www.btc38.com",
-        "announcement_page": "/company_notices.html",
-        "announcement_xpath": '//li[@class="shadow"]',
-        "title_xpath": './a/span[1]/text()',
+        "announcement_page": "",
+        "announcement_xpath": '//div[@class="notice"]/ul/li',
+        "title_xpath": './a/em/text()',
         "link_xpath": './a/@href'
     }
 
