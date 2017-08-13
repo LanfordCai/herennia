@@ -68,8 +68,8 @@ class SpiderMan:
     yunbi_configs = {
         "name": "yunbi",
         "host": "https://yunbi.zendesk.com",
-        "announcement_page": "/hc/zh-cn/sections/115001437708-业务公告",
-        "announcement_xpath": '//li[@class="article-list-item "]',
+        "announcement_page": "/hc/zh-cn/categories/115000844508-公告板",
+        "announcement_xpath": '//li[@class="article-list-item"]',
         "title_xpath": "./a/text()",
         "link_xpath": "./a/@href"
     }
