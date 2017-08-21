@@ -74,6 +74,15 @@ class SpiderMan:
         "link_xpath": './@href'
     }
 
+    yuanbao_configs = {
+        "name": "yuanbao",
+        "host": "https://www.yuanbao.com",
+        "announcement_page": "/news/?corpid=0",
+        "announcement_xpath": '//li[@class="hideli"]',
+        "title_xpath": './a/text()',
+        "link_xpath": './a/@href' 
+    }
+
     @classmethod
     def configurations(cls, name):
         if name == "huobi":
@@ -90,6 +99,9 @@ class SpiderMan:
             return cls.btc38_configs
         elif name == "b8":
             return cls.b8_configs
+        elif name == "yuanbao":
+            return cls.yuanbao_configs
+        
 
     @classmethod
     def url(cls, name):
