@@ -65,6 +65,15 @@ class SpiderMan:
         "link_xpath": './header/h3/a/@href'
     }
 
+    b8_configs = {
+        "name": "b8",
+        "host": "https://www.b8wang.com",
+        "announcement_page": "/news",
+        "announcement_xpath": '//a[@class="pjax post-title"]',
+        "title_xpath": './text()',
+        "link_xpath": './@href'
+    }
+
     @classmethod
     def configurations(cls, name):
         if name == "huobi":
@@ -79,6 +88,8 @@ class SpiderMan:
             return cls.jubi_configs
         elif name == "btc38":
             return cls.btc38_configs
+        elif name == "b8":
+            return cls.b8_configs
 
     @classmethod
     def url(cls, name):
