@@ -11,13 +11,31 @@ class SpiderMan:
         'Accept-Language': 'zh-cn'
     }
 
+    btc9_configs = {
+        "name": "btc9",
+        "host": "https://www.btc9.com",
+        "announcement_page": "/Art/index/id/1.html",
+        "announcement_xpath": '//li[@class="list-group-item"]',
+        "title_xpath": './a/text()',
+        "link_xpath": './a/@href' 
+    }
+
+    bter_configs = {
+        "name": "bter",
+        "host": "https://bter.com",
+        "announcement_page": "/articlelist/ann",
+        "announcement_xpath": '//div[@class="latnewslist"]/div[@class="entry"]',
+        "title_xpath": './a/h3/text()',
+        "link_xpath": './a/@href'
+    }
+
     btc38_configs = {
         "name": "btc38",
         "host": "http://www.btc38.com",
-        "announcement_page": "/",
-        "announcement_xpath": '//div[text()=' + u'"时代活动公告"' + ']/../div[3]/div[2]/a',
-        "title_xpath": './text()',
-        "link_xpath": './@href'   
+        "announcement_page": "",
+        "announcement_xpath": '//div[@class="notice"]/ul/li',
+        "title_xpath": './a/em/text()',
+        "link_xpath": './a/@href'
     }
 
     jubi_configs = {
@@ -50,8 +68,8 @@ class SpiderMan:
     yunbi_configs = {
         "name": "yunbi",
         "host": "https://yunbi.zendesk.com",
-        "announcement_page": "/hc/zh-cn/sections/115001437708-业务公告",
-        "announcement_xpath": '//li[@class="article-list-item "]',
+        "announcement_page": "/hc/zh-cn/categories/115000844508-公告板",
+        "announcement_xpath": '//li[@class="article-list-item"]',
         "title_xpath": "./a/text()",
         "link_xpath": "./a/@href"
     }
@@ -102,6 +120,10 @@ class SpiderMan:
         elif name == "yuanbao":
             return cls.yuanbao_configs
         
+        elif name == "bter":
+            return cls.bter_configs
+        elif name == "btc9":
+            return cls.btc9_configs
 
     @classmethod
     def url(cls, name):
