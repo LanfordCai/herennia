@@ -106,7 +106,7 @@ class SpiderMan:
         "host": "https://www.yuanbao.com",
         "announcement_page": "/news/?corpid=0",
         "announcement_xpath": '//li[@class="hideli"]',
-        "title_xpath": './a/text()',
+        "title_xpath": './a/text()[2]',
         "link_xpath": './a/@href' 
     }
 
