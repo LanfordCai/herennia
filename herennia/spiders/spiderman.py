@@ -101,6 +101,15 @@ class SpiderMan:
         "link_xpath": './a/@href' 
     }
 
+    viabtc_configs = {
+        "name": "viabtc",
+        "host": "https://www.viabtc.com",
+        "announcement_page": "/announcement",
+        "announcement_xpath": '//li[@class="msgItem"]',
+        "title_xpath": './a[@class="msgLink"]/span/strong/text()',
+        "link_xpath": './a[@class="msgLink"]/@href'  
+    }
+
     @classmethod
     def configurations(cls, name):
         if name == "huobi":
@@ -119,11 +128,12 @@ class SpiderMan:
             return cls.b8_configs
         elif name == "yuanbao":
             return cls.yuanbao_configs
-        
         elif name == "bter":
             return cls.bter_configs
         elif name == "btc9":
             return cls.btc9_configs
+        elif name == "viabtc":
+            return cls.viabtc_configs
 
     @classmethod
     def url(cls, name):
