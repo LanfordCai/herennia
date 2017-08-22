@@ -74,6 +74,15 @@ class SpiderMan:
         "link_xpath": "./a/@href"
     }
 
+    binance_configs = {
+        "name": "binance",
+        "host": "https://binance.zendesk.com",
+        "announcement_page": "/hc/zh-cn/categories/115000056351-公告中心",
+        "announcement_xpath": '//li[@class="article-list-item article-promoted"]',
+        "title_xpath": "./a/text()",
+        "link_xpath": "./a/@href"
+    }
+
     chbtc_configs = {
         "name": "chbtc",
         "host": "https://www.chbtc.com",
@@ -134,6 +143,8 @@ class SpiderMan:
             return cls.btc9_configs
         elif name == "viabtc":
             return cls.viabtc_configs
+        elif name == "binance":
+            return cls.binance_configs
 
     @classmethod
     def url(cls, name):
